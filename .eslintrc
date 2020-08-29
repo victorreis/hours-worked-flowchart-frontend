@@ -1,21 +1,97 @@
 {
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
   "extends": [
     "airbnb",
+    "airbnb/hooks",
     "react-app",
+    "plugin:react/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:jest/all",
     "prettier",
     "prettier/flowtype",
     "prettier/react"
   ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "prettier",
+    "fp",
+    "react",
+    "react-hooks",
+    "import-helpers",
+    "jsx-a11y",
+    "jest"
+  ],
   "rules": {
+    "max-len": ["warn",{"ignoreComments": true, "code": 200, "tabWidth": 4}],
+    "linebreak-style": [0],
+    "radix": "off",
+    "react/no-direct-mutation-state": "error",
+    "import/extensions": 0,
+    "react/display-name": 0,
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4],
+    "react-hooks/rules-of-hooks": "error",
+    "react/js-filename-extension": [0, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-one-expression-per-line": 0,
+    "react/prop-types": "off",
+    "no-useless-computed-key": "error",
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off",
+    "arrow-parens": "error",
+    "import/no-cycle": "off",
+    "jest/no-hooks": ["error", {"allow": ["beforeAll", "beforeEach", "afterAll", "afterEach"]}],
+    "import-helpers/order-imports": [
+        "warn",
+        {
+            "newlinesBetween": "always", // new line between groups
+            "groups": [
+                "/^react/",
+                "module",
+                "/^@src\/Pages/",
+                "/^@src\/Routes/",
+                "/^@src\/Services/",
+                "/^@src\/Store/",
+                "/^@src\/Utils/",
+                "/^@src\/Assets/",
+                "/^@src\/Theme/",
+                "/^@src\/Components/",
+                "/^@src\/Types/",
+                "/^@src\/Constants/",
+                "/^@src\/Exceptions/",
+                [
+                    "parent",
+                    "sibling",
+                    "index"
+                ]
+            ],
+            "alphabetize": {
+                "order": "asc",
+                "ignoreCase": true
+            }
+        }
+    ],
+
+
     // Allow jsx tags inside .js files.
     "react/jsx-filename-extension": [1, {"extensions": [".js", ".jsx"]}],
     // Disable props spreading (<App {...props} />) warning.
     "react/jsx-props-no-spreading": 0,
     // Throw warning instead of error when using array index as a key.
-    "react/no-array-index-key": 1,
+    "react/no-array-index-key": 2,
     // Allow modules with named exports only.
     "import/prefer-default-export": 0,
-    // Force {foo: 'bar'} object literal syntax.
+    // Force {foo: "bar"} object literal syntax.
     "object-curly-spacing": ["error", "never"],
     // Throw warning instead of error. Feel free to choose your favorite option https://eslint.org/docs/rules/arrow-body-style
     "arrow-body-style": ["warn", "as-needed"],
@@ -49,7 +125,6 @@
       }
     ]
   },
-  "plugins": ["prettier", "fp"],
   "settings": {
     "import/resolver": {
       "node": {
@@ -59,14 +134,25 @@
   },
   "overrides": [
     {
-      "files": [ "./*.js"],
+      "files": [
+        "./*.js"
+      ],
       "rules": {
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            "devDependencies": true,
+            "optionalDependencies": false,
+            "peerDependencies": false
+          }
+        ],
         "global-require": 0
       }
     },
     {
-      "files": ["**/*.spec.js"],
+      "files": [
+        "**/*.spec.js"
+      ],
       "rules": {
         "react/prop-types": "off"
       }
