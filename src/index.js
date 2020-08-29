@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import withReduxFeatures from './withReduxFeatures';
+
 import App from './components/App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import withReduxFeatures from './withReduxFeatures';
 
 /** Wrap App component with store providers */
 const WrappedApp = withReduxFeatures(App);

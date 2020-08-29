@@ -1,6 +1,8 @@
-import {combineReducers, createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
+
+import {combineReducers, createStore, applyMiddleware, compose} from 'redux';
 import promise from 'redux-promise-middleware';
+
 import {CounterReducer} from './features/counter';
 import {RandomReducer} from './features/random';
 import withProvider from './withProvider';
@@ -10,8 +12,8 @@ import withProvider from './withProvider';
  * all features of the application
  */
 const rootReducer = combineReducers({
-  count: CounterReducer,
-  random: RandomReducer,
+    count: CounterReducer,
+    random: RandomReducer,
 });
 
 /**
@@ -25,8 +27,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 /** Create Redux store with root reducer and middleware included */
 export const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(promise))
+    rootReducer,
+    composeEnhancers(applyMiddleware(promise))
 );
 
 /**
