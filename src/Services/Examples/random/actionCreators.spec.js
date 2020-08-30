@@ -9,7 +9,7 @@ import {toMatchSpecificSnapshot} from 'jest-specific-snapshot';
 import configureStore from 'redux-mock-store';
 import promise from 'redux-promise-middleware';
 
-import config from '../../config';
+import config from '../../../config.js';
 import useActions from './actionCreators';
 import {GET_RANDOM_NUMBER} from './actionTypes';
 

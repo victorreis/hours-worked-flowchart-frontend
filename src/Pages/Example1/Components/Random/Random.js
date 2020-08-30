@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {useActions, useRandomAPI} from '../../features/random';
+import {useRandomAPI, useActions} from 'Services/Examples/random';
+
 import classes from './Random.module.css';
 
 const Random = () => {

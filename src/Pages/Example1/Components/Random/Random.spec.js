@@ -8,10 +8,10 @@ import MockAdapter from 'axios-mock-adapter';
 import {toMatchSpecificSnapshot} from 'jest-specific-snapshot';
 import configureStore from 'redux-mock-store';
 import promise from 'redux-promise-middleware';
+import {GET_RANDOM_NUMBER} from 'Services/Examples/random/actionTypes';
 
-import config from '../../config';
-import {GET_RANDOM_NUMBER} from '../../features/random/actionTypes';
-import Random from './Random';
+import config from '../../../../config.js';
+import Random from './Random.js';
 
 describe('components > Random', () => {
     /**

@@ -3,8 +3,8 @@ import {Provider} from 'react-redux';
 import {combineReducers, createStore, applyMiddleware, compose} from 'redux';
 import promise from 'redux-promise-middleware';
 
-import {CounterReducer} from './features/counter';
-import {RandomReducer} from './features/random';
+import {CounterReducer} from './Services/Examples/counter';
+import {RandomReducer} from './Services/Examples/random';
 import withProvider from './withProvider';
 
 /**

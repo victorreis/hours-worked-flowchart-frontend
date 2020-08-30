@@ -4,9 +4,9 @@ import {Provider} from 'react-redux';
 import {render} from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 
-import App from './App';
+import Example1 from './Example1';
 
-describe('components > App', () => {
+describe('components > Example1', () => {
     const mockStore = configureStore([]);
     const store = mockStore({
         count: {
@@ -28,7 +28,7 @@ describe('components > App', () => {
          * `wrapper`
          * @see https://testing-library.com/docs/react-testing-library/api#wrapper
          */
-        const {asFragment} = render(<App />, {
+        const {asFragment} = render(<Example1 />, {
             wrapper: ({children}) => (
                 <Provider store={store}>{children}</Provider>
             ),

@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import {INCREMENT_COUNTER} from './actionTypes';
 import useCountValue from './selectors';
 
-const useActions = () => {
+const useActionsCounter = () => {
     const dispatch = useDispatch();
     const count = useCountValue();
     const incrementCounter = useCallback(() => {
@@ -16,4 +16,4 @@ const useActions = () => {
     return {incrementCounter};
 };
 
-export default useActions;
+export default useActionsCounter;
