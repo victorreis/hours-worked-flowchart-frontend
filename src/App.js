@@ -3,26 +3,16 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 import withReduxFeatures from 'withReduxFeatures';
 
+import CustomNavbar from './Components/Navigation/CustomNavbar';
 import About from './Pages/About';
 import Example1 from './Pages/Example1';
 import HoursWorkedFlowchart from './Pages/HoursWorkedFlowchart';
+import routes from './Routes/Routes';
 
 const NonWrappedApp = () => (
     <>
         <Router>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">About</Link>
-                    </li>
-                    <li>
-                        <Link to="/example">example</Link>
-                    </li>
-                </ul>
-            </nav>
+            <CustomNavbar items={routes} />
             <Switch>
                 <Route path="/example">
                     <Example1 />
