@@ -1,4 +1,5 @@
 import React from 'react';
+import {Row, Col} from 'react-materialize';
 import {Switch, Route} from 'react-router-dom';
 
 import HoursWorkedFlowchart from '../../../Pages/HoursWorkedFlowchart/HoursWorkedFlowchart';
@@ -13,8 +14,20 @@ const CustomSwitch = (props) => {
     return (
         <div className={classes.CustomSwitchContainer}>
             <Switch>
-                <Route path="/" exact component={HoursWorkedFlowchart} />
-                {routes}
+                <Row>
+                    <Col l={1} />
+                    <Col l={10} m={12} s={12}>
+                        <br />
+                        <br />
+                        <Route
+                            path="/"
+                            exact
+                            component={HoursWorkedFlowchart}
+                        />
+                        {routes}
+                    </Col>
+                    <Col l={1} />
+                </Row>
             </Switch>
         </div>
     );

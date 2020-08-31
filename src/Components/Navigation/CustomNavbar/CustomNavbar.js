@@ -16,14 +16,11 @@ const CustomNavbar = (props) => {
     return (
         <Navbar
             alignLinks="right"
-            brand={
-                <Link to="/" className={classes.BrandLink}>
-                    HWFlowchart
-                </Link>
-            }
+            brand={<Link to="/">HWFlowchart</Link>}
             id="mobile-nav"
             menuIcon={<Icon>menu</Icon>}
             className={classes.CustomNavbar}
+            centerChildren
             options={{
                 draggable: true,
                 edge: 'left',
