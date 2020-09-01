@@ -10,8 +10,10 @@ import {
     Card,
 } from 'react-materialize';
 
+import axios from 'axios';
 import CustomTimePicker from 'Components/CustomTimePicker';
 import moment from 'moment';
+import {PieChart, Pie, Sector, Cell} from 'recharts';
 
 import {HOME_START_INPUT, HOME_FINISH_INPUT} from '../../Constants/Texts';
 import classes from './HoursWorkedFlowchart.module.css';
@@ -30,6 +32,8 @@ const HoursWorkedFlowchart = (props) => {
     const [startMinuteInput, setStartMinuteInput] = useState('');
     const [finishHourInput, setFinishHourInput] = useState('');
     const [finishMinuteInput, setFinishMinuteInput] = useState('');
+    const [daytimeHours, setDaytimeHours] = useState(null);
+    const [nightHours, setNightHours] = useState(null);
 
     const handleChangeStartHourInput = (e) => {
         setStartHourInput(e.target.value);
@@ -44,34 +48,33 @@ const HoursWorkedFlowchart = (props) => {
         setFinishMinuteInput(e.target.value);
     };
 
-    // const [startHourRange, setStartHourRange] = useState(0);
-    // const [startMinuteRange, setStartMinuteRange] = useState(0);
-    // const handleChangeStartHourRange = (e) => {
-    //     console.log(e);
-    //     setStartHourRange(e.target.value);
-    // };
-    // const handleChangeStartMinuteRange = (e) => {
-    //     console.log(e);
-    //     setStartMinuteRange(e.target.value);
-    // };
-    // console.log('RANGE', `${startHourRange}:${startMinuteRange}`);
-
-    console.log('START INPUT', `${startHourInput}:${startMinuteInput}`);
-    console.log(
-        'startFormatted',
-        formattedMoment(startHourInput, startMinuteInput)
-    );
-
-    console.log('FINISH INPUT', `${finishHourInput}:${finishMinuteInput}`);
-    console.log(
-        'finishFormatted',
-        formattedMoment(finishHourInput, finishMinuteInput)
-    );
+    const handleClickGenerateChart = () => {
+        if (
+            startHourInput &&
+            startMinuteInput &&
+            finishHourInput &&
+            finishMinuteInput
+        ) {
+            axios
+                .post('http://localhost:3001/worked-hours', {
+                    startTime: `${startHourInput}:${startMinuteInput}`,
+                    finishTime: `${finishHourInput}:${finishMinuteInput}`,
+                })
+                .then((response) => {
+                    setDaytimeHours(response.data.daytimeHours);
+                    setNightHours(response.data.nightHours);
+                })
+                .catch((error) => {
+                    // eslint-disable-next-line no-console
+                    console.error(error);
+                });
+        }
+    };
 
     return (
         <>
             <Row s={12}>
-                <Col l={4} m={6} s={12}>
+                <Col l={5} m={6} s={12}>
                     <CustomTimePicker
                         title={HOME_START_INPUT}
                         iconName="schedule"
@@ -89,10 +92,30 @@ const HoursWorkedFlowchart = (props) => {
                         handleChangeMinuteInput={handleChangeFinishMinuteInput}
                     />
                     <Row align="right">
-                        <Button>Generate Chart</Button>
+                        <Button onClick={handleClickGenerateChart}>
+                            Generate Chart
+                        </Button>
                     </Row>
                 </Col>
-                <Col>Chart</Col>
+                <Col l={7} m={6} s={12} align="center">
+                    <Card title="DAYTIME HOURS WORKED">
+                        <Row align="center">
+                            <br />
+                            <br />
+                            {daytimeHours || 'Not executed yet.'}
+                        </Row>
+                    </Card>
+                    <Card
+                        title="NIGHT HOURS WORKED"
+                        className="blue-grey darken-1"
+                        textClassName="white-text">
+                        <Row align="center">
+                            <br />
+                            <br />
+                            {nightHours || 'Not executed yet.'}
+                        </Row>
+                    </Card>
+                </Col>
             </Row>
         </>
     );

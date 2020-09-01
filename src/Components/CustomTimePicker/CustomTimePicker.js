@@ -19,7 +19,7 @@ const CustomTimePicker = (props) => {
                     <Icon>{iconName}</Icon>
                 </Col>
                 <Col s={9} align="center">
-                    <Col m={4} s={4} xs={6}>
+                    <Col l={5} m={4} s={4} xs={6}>
                         <TextInput
                             type="number"
                             min="0"
@@ -28,8 +28,8 @@ const CustomTimePicker = (props) => {
                             onChange={handleChangeHourInput}
                         />
                     </Col>
-                    <Col className="teste">:</Col>
-                    <Col m={4} s={4} xs={6}>
+                    <Col>:</Col>
+                    <Col l={5} m={4} s={4} xs={6}>
                         <TextInput
                             type="number"
                             min="0"

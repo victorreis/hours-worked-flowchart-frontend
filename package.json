@@ -1,7 +1,9 @@
 {
     "name": "hours-worked-flowchart-frontend",
     "version": "0.1.0",
+    "description": "Boilerplate React + Redux + Jest + Materialize",
     "private": true,
+    "author": "Victor Reis",
     "dependencies": {
         "@material-ui/icons": "^4.9.1",
         "@testing-library/jest-dom": "^5.11.1",
@@ -38,6 +40,7 @@
         "react-router-dom": "^5.2.0",
         "react-scripts": "3.4.3",
         "react-test-renderer": "^16.13.1",
+        "recharts": "^1.8.5",
         "redux": "^4.0.5",
         "redux-mock-store": "^1.5.4",
         "redux-promise-middleware": "^6.1.2",

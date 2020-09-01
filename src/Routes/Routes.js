@@ -1,6 +1,5 @@
-import Example1 from 'Pages/Example1';
-
 import About from '../Pages/About';
+import Example1 from '../Pages/Example1';
 import PageNotFound from '../Pages/PageNotFound';
 
 const routes = [
