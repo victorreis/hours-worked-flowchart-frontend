@@ -4,6 +4,7 @@
     "description": "Boilerplate React + Redux + Jest + Materialize",
     "private": true,
     "author": "Victor Reis",
+    "license": "MIT",
     "dependencies": {
         "@material-ui/icons": "^4.9.1",
         "@testing-library/jest-dom": "^5.11.1",
